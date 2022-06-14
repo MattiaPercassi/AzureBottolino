@@ -1,6 +1,7 @@
 # Azure Bottolino
 
 This is the code for interacting with a Telegram Bot named Bottolino.
+
 You can find the bot by searching for @bottolino_bot in Telegram!
 
 The main purpose of the bot is to record the daily transactions and store them in an SQL database.
