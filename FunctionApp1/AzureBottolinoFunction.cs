@@ -27,8 +27,8 @@ namespace FunctionApp1
             ILogger log)
         {
             // Retrieve connection strings and bot token
-            GlobalConfig.SQLconnectionstring = AzureBottolinoApp.EnviromentalConfig.CnnValFromSecret("TransactionBotAzure");
-            GlobalConfig.BotToken = AzureBottolinoApp.EnviromentalConfig.CnnValFromSecret("Bottolino");
+            GlobalConfig.SQLconnectionstring = AzureBottolinoApp.GetConnections.CnnValFromSecret("TransactionBotAzure");
+            GlobalConfig.BotToken = AzureBottolinoApp.GetConnections.CnnValFromSecret("Bottolino");
 
             TelegramBotClient botClient = new TelegramBotClient(GlobalConfig.BotToken);
             using var cts = new CancellationTokenSource();

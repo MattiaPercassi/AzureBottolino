@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace AzureBottolinoApp
 {
-    public static class EnviromentalConfig
+    public static class GetConnections
     {
         public static string CnnValFromSecret(string name)
         {
