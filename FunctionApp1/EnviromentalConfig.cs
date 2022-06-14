@@ -13,13 +13,5 @@ namespace AzureBottolinoApp
         {
             return System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
         }
-        public static string Trimbody(string body)
-        {
-            string output;
-            int start = body.IndexOf("[");
-            int end = body.IndexOf("]");
-            output = body.Substring(start + 1, end - start - 1);
-            return output;
-        }
     }
 }
