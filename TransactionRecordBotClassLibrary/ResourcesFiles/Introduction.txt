@@ -1,0 +1,6 @@
+﻿Hi, my name is Bottolino!
+I will help you keep track of your expanses in few simple steps.
+You can make a request through the menu commands, and I will guide you from there.
+Use /insert to start recording a transaction.
+Use /updateemail to let me know where to mail the compiled reports.
+You can interrupt a request at any stage by using /delete.
