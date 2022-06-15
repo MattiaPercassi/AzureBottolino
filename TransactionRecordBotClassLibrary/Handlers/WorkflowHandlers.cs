@@ -135,8 +135,8 @@ namespace TransactionRecordBotClassLibrary.Handlers
                                 msg = DataManipulation.GroupTransactionsByCategory(transactions);
                             }
                             Messages.GeneralMessageAsync(botClient, update, msg);
-                            break;
                             WorkflowLog.DeleteWorkflow(DataFromMessage.GetUserId(update));
+                            break;
                         default:
                             break;
                     }
