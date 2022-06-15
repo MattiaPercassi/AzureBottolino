@@ -123,8 +123,8 @@ namespace TransactionRecordBotClassLibrary.Handlers
                                 case Reports.AllTime:
                                     transactions = SQLConnector.GetTransactionsByUserid(DataFromMessage.GetUserId(update));
                                     break;
-                                case Reports.LastMonth:
-                                    transactions = SQLConnector.GetTransactionsByUserid_LastMonth(DataFromMessage.GetUserId(update));
+                                case Reports.CurrentMonth:
+                                    transactions = SQLConnector.GetTransactionsByUserid_CurrentMonth(DataFromMessage.GetUserId(update));
                                     break;
                                 default:
                                     break;

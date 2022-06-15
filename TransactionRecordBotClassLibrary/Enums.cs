@@ -32,7 +32,7 @@ namespace TransactionRecordBotClassLibrary
     public enum Reports
     {
         AllTime,
-        LastMonth
+        CurrentMonth
     }
 
 }
