@@ -19,9 +19,17 @@ namespace TransactionRecordBotClassLibrary.Keyboards
         public ReplyKeyboardMarkup Keyboard_YesNo { get; }
         public ReplyKeyboardMarkup Keyboard_CategoryChoice { get; }
         public ReplyKeyboardMarkup Keyboard_Skip { get; }
+        public ReplyKeyboardMarkup Keyboard_Report { get; }
 
         public KeyboardsStandard()
         {
+            Keyboard_Report = new(
+                new[]
+                {
+                    new KeyboardButton(Reports.AllTime.ToString()),
+                    new KeyboardButton(Reports.CurrentMonth.ToString())
+                });
+
             Keyboard_YesNo = new(
                 new[]
                 {

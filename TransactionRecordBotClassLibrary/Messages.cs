@@ -29,7 +29,8 @@ namespace TransactionRecordBotClassLibrary
         public static async Task ReportChooseMessage(ITelegramBotClient botClient, Update update)
         {
             //TODO - implement function
-            throw new NotImplementedException();
+            KeyboardsStandard keyboards = new KeyboardsStandard();
+            await botClient.SendTextMessageAsync(DataFromMessage.GetCHatId(update), "Which report?", replyMarkup: keyboards.Keyboard_Report);
         }
         public static async Task TransactionConfirmationMessageAsync(ITelegramBotClient botClient, Update update, TransactionModel transaction)
         {

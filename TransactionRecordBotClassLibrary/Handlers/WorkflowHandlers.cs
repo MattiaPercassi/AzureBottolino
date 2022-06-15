@@ -116,6 +116,7 @@ namespace TransactionRecordBotClassLibrary.Handlers
                             workflow.step++;
                             break;
                         case 1:
+                            await Messages.RemoveCustomKeyboard(botClient, update);
                             string msg = "No transactions found..\nUse /insert to record a new transaction";
                             List<TransactionModel> transactions = new List<TransactionModel>();
                             switch (Enum.Parse<Reports>(update.Message.Text))
