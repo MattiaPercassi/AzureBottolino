@@ -197,8 +197,21 @@ namespace TransactionRecordBotClassLibrary.Handlers
                     }
                     break;
                 case WorkflowType.report:
-                    //report does not take any input other than the workflow type
-                    validation = true;
+                    switch (workflow.step)
+                    {
+                        case 0:
+                            //report does not take any input other than the workflow type
+                            validation = true;
+                            break;
+                        case 1:
+                            if (Enum.IsDefined(typeof(Reports),update.Message.Text))
+                            {
+                                validation = true;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 default:
                     break;

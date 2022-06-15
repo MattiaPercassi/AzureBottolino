@@ -29,4 +29,10 @@ namespace TransactionRecordBotClassLibrary
         No,
         Skip
     }
+    public enum Reports
+    {
+        AllTime,
+        LastMonth
+    }
+
 }
