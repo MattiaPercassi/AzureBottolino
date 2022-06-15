@@ -107,8 +107,25 @@ namespace TransactionRecordBotClassLibrary
 
         public static List<TransactionModel> GetTransactionsByUserid_CurrentMonth(long userid)
         {
-            //TODO - implement function
-            throw new NotImplementedException();
+            DateTime today = DateTime.Now;
+            string startday = today.Date.ToString("yyyyMM")+"01";
+            string endday = today.Date.ToString("yyyyMM")+ DateTime.DaysInMonth(today.Year,today.Month).ToString("D2");
+            List<TransactionModel> transactions = new List<TransactionModel>();
+            using(IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.SQLconnectionstring))
+            {
+                var p = new DynamicParameters();
+                p.Add("@userid", userid);
+                p.Add("@startday", startday);
+                p.Add("@endday",endday);
+                p.Add("@returnval", 1, direction: ParameterDirection.ReturnValue);
+                transactions = connection.Query<TransactionModel, PlaceModel, TransactionModel>("dbo.spGetTransactionsByUserid_CurrentMonth", (tr, pl) =>
+                {
+                    tr.place = pl;
+                    return tr;
+                },
+                param: p, splitOn: "placename", commandType: CommandType.StoredProcedure).ToList();
+            }
+            return transactions;
         }
     }
 }
