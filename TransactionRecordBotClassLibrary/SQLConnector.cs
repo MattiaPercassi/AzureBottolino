@@ -118,7 +118,7 @@ namespace TransactionRecordBotClassLibrary
                 p.Add("@startday", startday);
                 p.Add("@endday",endday);
                 p.Add("@returnval", 1, direction: ParameterDirection.ReturnValue);
-                transactions = connection.Query<TransactionModel, PlaceModel, TransactionModel>("dbo.spGetTransactionsByUserid_CurrentMonth", (tr, pl) =>
+                transactions = connection.Query<TransactionModel, PlaceModel, TransactionModel>("dbo.spGetTransactionsByUserid_ByDate", (tr, pl) =>
                 {
                     tr.place = pl;
                     return tr;
