@@ -124,6 +124,7 @@ namespace TransactionRecordBotClassLibrary.Handlers
                                     transactions = SQLConnector.GetTransactionsByUserid(DataFromMessage.GetUserId(update));
                                     break;
                                 case Reports.LastMonth:
+                                    transactions = SQLConnector.GetTransactionsByUserid_LastMonth(DataFromMessage.GetUserId(update));
                                     break;
                                 default:
                                     break;

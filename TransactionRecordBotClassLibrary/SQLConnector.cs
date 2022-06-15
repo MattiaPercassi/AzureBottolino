@@ -104,5 +104,10 @@ namespace TransactionRecordBotClassLibrary
             }
             return transactions;
         }
+
+        public static List<TransactionModel> GetTransactionsByUserid_LastMonth(long userid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
