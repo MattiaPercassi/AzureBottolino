@@ -109,14 +109,35 @@ namespace TransactionRecordBotClassLibrary.Handlers
                     }
                     break;
                 case WorkflowType.report:
-                    List<TransactionModel> transactions = SQLConnector.GetTransactionsByUserid(DataFromMessage.GetUserId(update));
-                    string msg = "No transactions found..\nUse /insert to record a new transaction";
-                    if (transactions.Count != 0)
+                    switch (workflow.step)
                     {
-                        msg = DataManipulation.GroupTransactionsByCategory(transactions);
+                        case 0:
+                            Messages.ReportChooseMessage(botClient, update);
+                            workflow.step++;
+                            break;
+                        case 1:
+                            string msg = "No transactions found..\nUse /insert to record a new transaction";
+                            List<TransactionModel> transactions = new List<TransactionModel>();
+                            switch (Enum.Parse<Reports>(update.Message.Text))
+                            {
+                                case Reports.AllTime:
+                                    transactions = SQLConnector.GetTransactionsByUserid(DataFromMessage.GetUserId(update));
+                                    break;
+                                case Reports.LastMonth:
+                                    break;
+                                default:
+                                    break;
+                            }
+                            if (transactions.Count != 0)
+                            {
+                                msg = DataManipulation.GroupTransactionsByCategory(transactions);
+                            }
+                            Messages.GeneralMessageAsync(botClient, update, msg);
+                            break;
+                            WorkflowLog.DeleteWorkflow(DataFromMessage.GetUserId(update));
+                        default:
+                            break;
                     }
-                    Messages.GeneralMessageAsync(botClient, update, msg);
-                    WorkflowLog.DeleteWorkflow(DataFromMessage.GetUserId(update));
                     break;
                 case WorkflowType.delete:
                     break;
